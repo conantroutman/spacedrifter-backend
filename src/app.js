@@ -1,6 +1,7 @@
 const express = require('express');
 const morgan = require('morgan');
 const helmet = require('helmet');
+const cors = require('cors');
 
 require('dotenv').config();
 
@@ -9,6 +10,9 @@ const api = require('./api');
 
 const app = express();
 app.set('trust proxy', 1);
+
+// Enable CORS
+app.use(cors());
 
 app.use(morgan('dev'));
 app.use(helmet());
