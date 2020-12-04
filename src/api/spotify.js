@@ -2,13 +2,23 @@ const express = require('express');
 const router = express.Router();
 const SpotifyWebApi = require('spotify-web-api-node');
 
-// Spotify API config
+// Spotify API config with credentials
 const spotifyApi = new SpotifyWebApi({
     clientId: process.env.SPOTIFY_ID,
     clientSecret: process.env.SPOTIFY_SECRET
 })
-spotifyApi.setAccessToken(process.env.SPOTIFY_TOKEN);
 
+// Get an access token
+spotifyApi.clientCredentialsGrant().then(
+    function(data) {
+        spotifyApi.setAccessToken(data.body['access_token']);
+    },
+    function(err) {
+        console.log('Something went wrong!', err);
+    }
+);
+
+// The artist ID to get albums from
 const artistId = '4otyLOpxTJ6VdY0EEfjIcS';
 
 // Get albums from Spotify
