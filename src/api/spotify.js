@@ -18,6 +18,7 @@ router.get('/', async function(req, res) {
         .then(function(data) {
             response = data.body;
         }, function(err) {
+            response = err;
             console.error(err);
         });
     return res.json(response);
