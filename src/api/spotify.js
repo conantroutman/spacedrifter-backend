@@ -11,15 +11,17 @@ const spotifyApi = new SpotifyWebApi({
 
 spotifyApi.setAccessToken(process.env.SPOTIFY_TOKEN);
 
+const artistId = '4otyLOpxTJ6VdY0EEfjIcS';
+
 router.get('/', async function(req, res) {
-    let test = {};
-    await spotifyApi.getArtistAlbums('43ZHCT0cAZBISjO8DG9PnE')
+    let response = {};
+    await spotifyApi.getArtistAlbums(artistId)
         .then(function(data) {
-            test = data.body;
+            response = data.body;
         }, function(err) {
             console.error(err);
         });
-    return res.json(test);
+    return res.json(response);
 })
 
 module.exports = router;
