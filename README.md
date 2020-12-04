@@ -1,21 +1,3 @@
-# Mars Weather API Proxy
+# Spacedrifter Website Backend
 
-## Setup
-
-```
-npm install
-```
-
-* Copy the `.env.sample` file to `.env` and update with your Nasa API key
-
-## Lint
-
-```
-npm run lint
-```
-
-## Development
-
-```
-npm run dev
-```
+Based on https://github.com/CodingGarden/mars-weather-api
